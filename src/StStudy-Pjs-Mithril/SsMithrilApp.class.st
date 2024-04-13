@@ -12,6 +12,12 @@ SsMithrilApp class >> defaultAppFolderParent [
  	^ '.' asFileReference
 ]
 
+{ #category : #'Mithril API' }
+SsMithrilApp >> _m: selector attrs: attrs children: children [
+	<javascript: 'return m(selector, attrs, children)'>
+
+]
+
 { #category : #accessing }
 SsMithrilApp >> incrementButton [
 	^ self elementAt: 'incrementButton'
@@ -24,8 +30,30 @@ SsMithrilApp >> initialize [
 	self setup
 ]
 
+{ #category : #'Mithril API' }
+SsMithrilApp >> m: selector attrs: attrs children: children [
+	^ self _m: selector attrs: attrs asDictionary children: children
+
+]
+
 { #category : #rendering }
 SsMithrilApp >> render [
+	self renderAt: 'counter' vnodes: (self
+			 m: 'div'
+			 attrs: {
+					 ('class' -> 'is-size-1').
+					 ('style' -> 'color:gray') }
+			 children: counter count)
+]
+
+{ #category : #'Mithril API' }
+SsMithrilApp >> render: element vnodes: vnodes [
+	<javascript: 'm.render(element, vnodes)'>
+]
+
+{ #category : #'Mithril API' }
+SsMithrilApp >> renderAt: elementId vnodes: vnodes [
+	^ self render: (self elementAt: elementId) vnodes: vnodes
 ]
 
 { #category : #accessing }
