@@ -1,6 +1,8 @@
 Class {
 	#name : #SsMithrilApp,
 	#superclass : #PjFileBasedWebApp,
+	#traits : 'SsTMithril',
+	#classTraits : 'SsTMithril classTrait',
 	#instVars : [
 		'counter'
 	],
@@ -10,12 +12,6 @@ Class {
 { #category : #defaults }
 SsMithrilApp class >> defaultAppFolderParent [
  	^ '.' asFileReference
-]
-
-{ #category : #'Mithril API' }
-SsMithrilApp >> _m: selector attrs: attrs children: children [
-	<javascript: 'return m(selector, attrs, children)'>
-
 ]
 
 { #category : #accessing }
@@ -30,12 +26,6 @@ SsMithrilApp >> initialize [
 	self setup
 ]
 
-{ #category : #'Mithril API' }
-SsMithrilApp >> m: selector attrs: attrs children: children [
-	^ self _m: selector attrs: attrs asDictionary children: children
-
-]
-
 { #category : #rendering }
 SsMithrilApp >> render [
 	| style |
@@ -48,16 +38,6 @@ SsMithrilApp >> render [
 					 ('class' -> 'is-size-1').
 					 ('style' -> style) }
 			 children: counter count)
-]
-
-{ #category : #'Mithril API' }
-SsMithrilApp >> render: element vnodes: vnodes [
-	<javascript: 'm.render(element, vnodes)'>
-]
-
-{ #category : #'Mithril API' }
-SsMithrilApp >> renderAt: elementId vnodes: vnodes [
-	^ self render: (self elementAt: elementId) vnodes: vnodes
 ]
 
 { #category : #accessing }
