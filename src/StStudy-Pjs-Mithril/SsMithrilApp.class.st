@@ -38,11 +38,15 @@ SsMithrilApp >> m: selector attrs: attrs children: children [
 
 { #category : #rendering }
 SsMithrilApp >> render [
+	| style |
+	style := counter count \\ 3 = 0
+		         ifTrue: [ 'color:red' ]
+		         ifFalse: [ 'color:gray' ].
 	self renderAt: 'counter' vnodes: (self
 			 m: 'div'
 			 attrs: {
 					 ('class' -> 'is-size-1').
-					 ('style' -> 'color:gray') }
+					 ('style' -> style) }
 			 children: counter count)
 ]
 
