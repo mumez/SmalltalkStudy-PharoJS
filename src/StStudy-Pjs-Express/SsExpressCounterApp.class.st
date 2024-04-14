@@ -17,3 +17,11 @@ SsExpressCounterApp class >> npmPackageNames [
 	<pharoJsSkip>
 	^ super npmPackageNames, #( ejs )
 ]
+
+{ #category : #initialization }
+SsExpressCounterApp >> initialize [
+	super initialize.
+	counter := PjCounter new.
+	console log: counter count.
+	
+]
