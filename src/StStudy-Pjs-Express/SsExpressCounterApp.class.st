@@ -19,9 +19,13 @@ SsExpressCounterApp class >> npmPackageNames [
 ]
 
 { #category : #initialization }
+SsExpressCounterApp >> initRoutes [
+	server get: '/' handler: [ :req :res | res send: 'hello' ]
+]
+
+{ #category : #initialization }
 SsExpressCounterApp >> initialize [
 	super initialize.
 	counter := PjCounter new.
-	console log: counter count.
-	
+	self initRoutes
 ]
