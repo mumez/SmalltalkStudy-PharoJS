@@ -1,0 +1,12 @@
+<div id="app" class="hero">
+    <div class="container">
+        <p class="title">Counter</p>
+        <p id="counter" class="subtitle is-size-1">0</p>
+        <button hx-get="/reset" hx-target="#counter" class="button is-danger">
+            Reset
+        </button>
+        <button hx-get="/increment" hx-target="#counter" class="button is-primary">
+            Increment
+        </button>
+    </div>
+</div>
