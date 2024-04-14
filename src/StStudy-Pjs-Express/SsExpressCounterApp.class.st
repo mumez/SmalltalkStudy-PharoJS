@@ -20,7 +20,8 @@ SsExpressCounterApp class >> npmPackageNames [
 
 { #category : #initialization }
 SsExpressCounterApp >> initRoutes [
-	server get: '/' handler: [ :req :res | res send: 'hello' ]
+	server set: 'view engine' to: 'ejs'.
+	server get: '/' handler: [ :req :res | self renderIndex: res ]
 ]
 
 { #category : #initialization }
@@ -28,4 +29,9 @@ SsExpressCounterApp >> initialize [
 	super initialize.
 	counter := PjCounter new.
 	self initRoutes
+]
+
+{ #category : #rendering }
+SsExpressCounterApp >> renderIndex: res [
+	res render: 'pages/index'
 ]
