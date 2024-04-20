@@ -11,7 +11,8 @@ Class {
 
 { #category : #defaults }
 SsMithrilApp class >> defaultAppFolderParent [
- 	^ '.' asFileReference
+	<pharoJsSkip>
+	^ '.' asFileReference
 ]
 
 { #category : #accessing }
