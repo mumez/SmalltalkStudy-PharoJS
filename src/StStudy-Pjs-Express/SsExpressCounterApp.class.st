@@ -9,6 +9,7 @@ Class {
 
 { #category : #defaults }
 SsExpressCounterApp class >> defaultAppFolderParent [
+	<pharoJsSkip>
  	^ '.' asFileReference
 ]
 
